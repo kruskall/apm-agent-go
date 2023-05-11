@@ -44,6 +44,10 @@ test:
 coverage:
 	@bash scripts/test_coverage.sh
 
+.PHONY: tidy
+tidy:
+	@for dir in $(shell scripts/moduledirs.sh); do (cd $$dir && go mod tidy -compat=$(GO_LANGUAGE_VERSION)); done
+
 .PHONY: fmt
 fmt:
 	@GOIMPORTSFLAGS=-w sh scripts/goimports.sh
