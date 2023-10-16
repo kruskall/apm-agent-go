@@ -10,7 +10,6 @@ that framework's API. The request context can be used for reporting <<custom-ins
 * <<builtin-modules-apmecho>>
 * <<builtin-modules-apmgin>>
 * <<builtin-modules-apmfiber>>
-* <<builtin-modules-apmbeego>>
 * <<builtin-modules-apmgorilla>>
 * <<builtin-modules-apmgrpc>>
 * <<builtin-modules-apmhttprouter>>
@@ -196,38 +195,6 @@ The apmfiber middleware will recover panics and send them to Elastic APM,
 so you do not need to install the fiber https://docs.gofiber.io/api/middleware/recover[recover] middleware.
 You can disable default behaviour by using `WithPanicPropagation` option.
 
-
-[[builtin-modules-apmbeego]]
-==== module/apmbeego
-Package apmbeego provides middleware for the https://beego.me/[Beego] web framework.
-
-For each request, a transaction is stored in the request context, which can be obtained via
-https://godoc.org/github.com/astaxie/beego/context#Context[beego/context.Context]`.Request.Context()`
-in your controller.
-
-[source,go]
-----
-import (
-	"github.com/astaxie/beego"
-
-	"go.elastic.co/apm/v2"
-	"go.elastic.co/apm/module/apmbeego/v2"
-)
-
-type thingController struct{beego.Controller}
-
-func (c *thingController) Get() {
-	span, _ := apm.StartSpan(c.Ctx.Request.Context(), "thingController.Get", "controller")
-	span.End()
-	...
-}
-
-func main() {
-	beego.Router("/", &thingController{})
-	beego.Router("/thing/:id:int", &thingController{}, "get:Get")
-	beego.RunWithMiddleWares("localhost:8080", apmbeego.Middleware())
-}
-----
 
 [[builtin-modules-apmgorilla]]
 ==== module/apmgorilla

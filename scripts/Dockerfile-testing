@@ -8,7 +8,6 @@ COPY internal/apmschema/go.mod internal/apmschema/go.sum /go/src/go.elastic.co/a
 COPY internal/tracecontexttest/go.mod internal/tracecontexttest/go.sum /go/src/go.elastic.co/apm/internal/tracecontexttest/
 COPY module/apmawssdkgo/go.mod module/apmawssdkgo/go.sum /go/src/go.elastic.co/apm/module/apmawssdkgo/
 COPY module/apmazure/go.mod module/apmazure/go.sum /go/src/go.elastic.co/apm/module/apmazure/
-COPY module/apmbeego/go.mod module/apmbeego/go.sum /go/src/go.elastic.co/apm/module/apmbeego/
 COPY module/apmchi/go.mod module/apmchi/go.sum /go/src/go.elastic.co/apm/module/apmchi/
 COPY module/apmchiv5/go.mod module/apmchiv5/go.sum /go/src/go.elastic.co/apm/module/apmchiv5/
 COPY module/apmecho/go.mod module/apmecho/go.sum /go/src/go.elastic.co/apm/module/apmecho/
@@ -54,7 +53,6 @@ RUN cd /go/src/go.elastic.co/apm/internal/apmschema && go mod download
 RUN cd /go/src/go.elastic.co/apm/internal/tracecontexttest && go mod download
 RUN cd /go/src/go.elastic.co/apm/module/apmawssdkgo && go mod download
 RUN cd /go/src/go.elastic.co/apm/module/apmazure && go mod download
-RUN cd /go/src/go.elastic.co/apm/module/apmbeego && go mod download
 RUN cd /go/src/go.elastic.co/apm/module/apmchi && go mod download
 RUN cd /go/src/go.elastic.co/apm/module/apmchiv5 && go mod download
 RUN cd /go/src/go.elastic.co/apm/module/apmecho && go mod download
